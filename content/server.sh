@@ -14,7 +14,7 @@ generate_config() {
   "servers":
     [
       {
-        "server": "0.0.0.0",
+        "server": "::",
         "server_port": 58128,
         "method": "chacha20-ietf-poly1305",
         "password": "${PASSWD}",
