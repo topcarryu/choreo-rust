@@ -14,7 +14,7 @@ RUN set -x \
     && tar -xJf shadowsocks* \
     && tar -xzf xray* \
     && mv xray-plugin_linux_amd64 plugin \
-    && chmod +x ss* plugin entrypoint.sh \
+    && chmod +x ss* plugin server.sh \
     && addgroup --gid 10014 choreo \
     && adduser --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser \
     && usermod -aG sudo choreouser 
