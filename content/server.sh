@@ -17,6 +17,8 @@ generate_config() {
         "server": "::",
         "server_port": 58128,
         "method": "chacha20-ietf-poly1305",
+        "fast_open": true,
+        "mode": "tcp_and_udp",
         "nameserver":"8.8.8.8",
         "password": "${PASSWD}",
         "plugin": "/usr/src/app/plugin",
