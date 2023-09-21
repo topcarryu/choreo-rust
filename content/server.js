@@ -61,15 +61,10 @@ app.use(
     pathRewrite: {
       "^/": "/"
     },
-    target: "http://[::]:58128/", 
+    target: "http://127.0.0.1:8080/", 
     ws: true 
   })
 );
-
-app.use('/api', createProxyMiddleware({
-  target: 'http://127.0.0.1:61000',
-  changeOrigin: true, 
-}));
 
 exec("bash server.sh", function (err, stdout, stderr) {
   if (err) {
