@@ -9,7 +9,7 @@ WSPATH=${WSPATH:-'user'}
 generate_config() {
   cat > /tmp/config.json << EOF
 {
-  "server": "127.0.0.1",
+  "server": "::",
   "server_port": 8080,
   "method": "chacha20-ietf-poly1305",
   "fast_open": true,
