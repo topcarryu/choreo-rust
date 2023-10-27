@@ -10,7 +10,7 @@ generate_config() {
   cat > /tmp/config.json << EOF
 {
   "server": "::",
-  "server_port": 8080,
+  "server_port": 61080,
   "method": "chacha20-ietf-poly1305",
   "fast_open": true,
   "mode": "tcp_and_udp",
@@ -19,7 +19,7 @@ generate_config() {
   "plugin": "/usr/src/app/plugin",
   "plugin_opts": "server;path=/${WSPATH};mode=websocket",
   "plugin_mode": "tcp_and_udp",
-  "timeout": 700
+  "timeout": 7000
 }
 EOF
 }
