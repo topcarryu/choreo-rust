@@ -9,7 +9,7 @@
     "reuse_port": true,
     "no_delay": true,
     "plugin": "/usr/src/app/plugin",
-    "plugin_opts": "server;path=/WSPATH;mode=websocket",
+    "plugin_opts": "server;path=WSPATH;mode=websocket",
     "plugin_mode": "tcp_and_udp",
     "timeout": 300
 }
