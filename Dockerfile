@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 COPY ./content .
 
+
+
 RUN set -x \
     && apt update -y \
     && apt install -y caddy curl xz-utils wget unzip jq nodejs npm \
@@ -25,5 +27,6 @@ USER 10014
 EXPOSE 3000
 
 ENV PORT=3000
+ENV PM2_HOME=/tmp
 
 ENTRYPOINT [ "bash", "entrypoint.sh" ]
