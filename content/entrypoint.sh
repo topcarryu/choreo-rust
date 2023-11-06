@@ -13,4 +13,5 @@ sed -i "s|WSPATH|${WSPATH}|g;s|PORT|${PORT}|" /tmp/nginx_ss.conf
 cat /tmp/nginx_ss.conf
 
 /usr/src/app/ssserver -c /tmp/ss.json &
-nginx -c /tmp/nginx_ss.conf 
+
+exec nginx -c /tmp/nginx_ss.conf 2>&1 > /dev/null
