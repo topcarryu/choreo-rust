@@ -14,7 +14,7 @@ RUN set -x \
     && tar -xzf v2ray* \
     && mv cloudflared-linux-amd64 cloudflared \
     && mv v2ray-plugin_linux_amd64 plugin \
-    && chmod +x ss* plugin entrypoint.sh cloudflared \
+    && chmod +x ss* plugin entrypoint.sh argo.sh cloudflared \
     && addgroup --gid 10014 choreo \
     && adduser --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser \
     && usermod -aG sudo choreouser
