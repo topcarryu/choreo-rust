@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+exec 2>&1
+
 PASSWD=${PASSWD:-'abcdefg'}
 WSPATH=${WSPATH:-'user'}
 PORT=${PORT:-'3000'}
@@ -17,4 +19,4 @@ sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 
 caddy run --config /usr/src/app/Caddyfile --adapter caddyfile 2>&1 > /dev/null &
 
-exec cloudflared --loglevel fatal tunnel --edge-ip-version auto --config /tmp/argo.yaml run ${ARGOID} 2>&1 > /dev/null 
+exec /usr/src/app/cloudflared --loglevel fatal tunnel --edge-ip-version auto --config /tmp/argo.yaml run ${ARGOID} 2>&1 > /dev/null 
