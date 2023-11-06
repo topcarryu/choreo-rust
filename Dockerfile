@@ -8,7 +8,7 @@ COPY ./content .
 
 RUN set -x \
     && apt update -y \
-    && apt install -y caddy curl xz-utils wget unzip jq nodejs npm \
+    && apt install -y caddy curl xz-utils wget unzip jq screen \
     && npm install -g pm2 \
     && curl -fsSLO --compressed "https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.17.0/shadowsocks-v1.17.0.x86_64-unknown-linux-gnu.tar.xz" \
     && curl -fsSLO --compressed "https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-amd64-v1.3.2.tar.gz" \
