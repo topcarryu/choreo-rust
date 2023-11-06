@@ -13,7 +13,7 @@ sed -i "s|WSPATH|${WSPATH}|g;s|PORT|${PORT}|" /tmp/nginx_ss.conf
 cat /tmp/nginx_ss.conf
 
 cd /tmp
-mkdir /nginx-tmp
+mkdir -p /tmp/nginx-tmp
 
 /usr/src/app/ssserver -c /tmp/ss.json &
 
