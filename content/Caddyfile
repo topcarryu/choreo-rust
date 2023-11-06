@@ -1,5 +1,5 @@
 :{$PORT} {
-	handle {$WSPATH}/vm* {
+	handle {$WSPATH}* {
 		@websocket {
 			header Connection *Upgrade*
 			header Upgrade websocket
