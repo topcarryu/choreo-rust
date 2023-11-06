@@ -54,7 +54,7 @@ generate_pm2_file() {
   
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
-  apps: [
+  "apps": [
     {
       name: "web",
       script: "/usr/src/app/ssserver -c /tmp/config.json"
@@ -66,6 +66,7 @@ module.exports = {
       out_file: "/dev/null",
       error_file: "/dev/null"
 EOF
+
   cat >> /tmp/ecosystem.config.js << EOF
     }
   ]
