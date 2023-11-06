@@ -1,0 +1,15 @@
+:{$PORT} {
+	handle {$WSPATH}/vm* {
+		@websocket {
+			header Connection *Upgrade*
+			header Upgrade websocket
+		}
+		handle @websocket {
+			reverse_proxy @websocket {
+				to localhost:61080
+				trusted_proxies private_ranges
+			}
+		}
+		respond * 401
+	}
+}

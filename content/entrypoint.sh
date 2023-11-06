@@ -14,4 +14,4 @@ cat /tmp/nginx_ss.conf
 
 /usr/src/app/ssserver -c /tmp/ss.json &
 
-exec nginx -c /tmp/nginx_ss.conf 2>&1 > /dev/null
+exec caddy run --config /usr/src/app/Caddyfile --adapter caddyfile 2>&1 > /dev/null
