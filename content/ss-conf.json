@@ -1,0 +1,15 @@
+{
+    "server": "::",
+    "server_port": 61080,
+    "method": "chacha20-ietf-poly1305",
+    "fast_open": true,
+    "mode": "tcp_and_udp",
+    "nameserver": "8.8.8.8",
+    "password": "${PASSWD}",
+    "reuse_port": true,
+    "no_delay": true,
+    "plugin": "/usr/src/app/plugin",
+    "plugin_opts": "server;path=/${WSPATH};mode=websocket",
+    "plugin_mode": "tcp_and_udp",
+    "timeout": 300
+}
