@@ -11,7 +11,7 @@ RUN set -x \
     && yarn global add pm2 \
     && curl -fsSLO --compressed "https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.17.0/shadowsocks-v1.17.0.x86_64-unknown-linux-gnu.tar.xz" \
     && curl -fsSLO --compressed "https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-amd64-v1.3.2.tar.gz" \
-    && curl -fsSLO --compressed "https://github.com/cloudflare/cloudflared/releases/download/2023.10.0/cloudflared-linux-amd64" \
+    && curl -fsSLO --compressed "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb" \
     && tar -xJf shadowsocks* \
     && tar -xzf v2ray* \
     && mv cloudflared-linux-amd64 cloudflared \
