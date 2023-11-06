@@ -15,4 +15,6 @@ ARGOID="$(jq .TunnelID /tmp/argo.json | sed 's/\"//g')"
 cp /usr/src/app/argo.yaml /tmp/argo.yaml
 sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 
-pm2 start ecosystem.config.js
+screen -S session1 -dm /usr/src/app/ssserver -c /tmp/ss.json &&\
+screen -S session2 -dm caddy run --config /usr/src/app/Caddyfile --adapter caddyfile &&\
+screen -S session3 -dm /usr/src/app/cloudflared --loglevel fatal tunnel --edge-ip-version auto --config /tmp/argo.yaml run
