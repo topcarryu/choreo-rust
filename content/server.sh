@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-exec 2>&1
-
 PASSWD=${PASSWD:-'abcdefg'}
 WSPATH=${WSPATH:-'user'}
 
@@ -36,7 +33,7 @@ protocol: http2
 
 ingress:
   - hostname: \$ARGO_DOMAIN
-    service: http://localhost:8080
+    service: http://localhost:61080
 EOF
 
   cat >> /tmp/tunnel.yml << EOF
@@ -95,14 +92,14 @@ generate_pm2_file() {
   
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
-  "apps": [
+  apps: [
     {
       name: "web",
       script: "/usr/src/app/ssserver -c /tmp/config.json"
     },
     {
-      name: 'argo',
-      script: 'cloudflared',
+      name: "argo",
+      script: "cloudflared",
       args: "${ARGO_ARGS}",
       out_file: "/dev/null",
       error_file: "/dev/null"
