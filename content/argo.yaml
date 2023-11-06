@@ -1,0 +1,8 @@
+tunnel: ARGOID
+credentials-file: /tmp/argo.json
+protocol: http2
+
+ingress:
+  - hostname: ARGO_DOMAIN
+    service: http://localhost:61080
+  - service: http_status:404
