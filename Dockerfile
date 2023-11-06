@@ -17,8 +17,7 @@ RUN set -x \
     && chmod +x ss* plugin entrypoint.sh cloudflared \
     && addgroup --gid 10014 choreo \
     && adduser --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser \
-    && usermod -aG sudo choreouser \
-    && chown -R www-data:www-data /var/lib/nginx
+    && usermod -aG sudo choreouser
 
 USER 10014
 
