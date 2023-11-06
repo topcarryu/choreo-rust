@@ -27,6 +27,5 @@ USER 10014
 EXPOSE 3000
 
 ENV PORT=3000
-ENV PM2_HOME=/tmp
 
 ENTRYPOINT [ "bash", "entrypoint.sh" ]
