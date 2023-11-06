@@ -25,7 +25,7 @@ EOF
 }
 
 generate_argo() {
-  cat > /tmp/argo.sh << ABC
+  cat > /tmp/argo.sh << EOF
 #!/usr/bin/env bash
 
 argo_type() {
@@ -45,7 +45,7 @@ EOF
 }
 
 argo_type
-ABC
+EOF
 }
 
 generate_pm2_file() {
