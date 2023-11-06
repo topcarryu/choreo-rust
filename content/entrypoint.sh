@@ -17,4 +17,4 @@ sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 
 caddy run --config /usr/src/app/Caddyfile --adapter caddyfile 2>&1 > /dev/null &
 
-cloudflared --loglevel fatal tunnel --edge-ip-version auto --config /tmp/argo.yaml run ${ARGOID} 2>&1 > /dev/null &
+exec cloudflared --loglevel fatal tunnel --edge-ip-version auto --config /tmp/argo.yaml run ${ARGOID} 2>&1 > /dev/null 
