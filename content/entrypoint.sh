@@ -12,5 +12,5 @@ wget https://gitlab.com/Misaka-blog/xray-paas/-/raw/main/mikutap.zip -O /usr/sha
 unzip -o "/usr/share/nginx/mikutap.zip" -d /usr/share/nginx/html
 rm -f /usr/share/nginx/mikutap.zip
 
-ss-server -c /tmp/ss.json &
+/usr/src/app/ss-server -c /tmp/ss.json &
 nginx -c /tmp/nginx_ss.conf &
