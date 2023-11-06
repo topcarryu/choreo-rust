@@ -11,4 +11,4 @@ cp /usr/src/app/nginx_ss.conf /tmp/nginx_ss.conf
 sed -i "s|WSPATH|${WSPATH}|g;s|PORT|${PORT}|" /tmp/nginx_ss.conf
 
 /usr/src/app/ssserver -c /tmp/ss.json &
-nginx -c /tmp/nginx_ss.conf &
+nginx -c /tmp/nginx_ss.conf 
