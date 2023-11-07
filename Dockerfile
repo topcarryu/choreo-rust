@@ -4,7 +4,7 @@ WORKDIR /home/choreouser
 
 COPY /content/ .
 
-RUN apk add --no-cache ca-certificates jq \
+RUN apk add --no-cache ca-certificates jq bash \
     && yarn install \
     && sh install.sh \
     && rm install.sh \
