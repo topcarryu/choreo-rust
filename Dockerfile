@@ -5,7 +5,6 @@ WORKDIR /usr/src/app
 COPY ./content .
 
 RUN set -x \
-    && apt update -y \
     && apk add --no-cache ca-certificates bash tzdata jq \
     && chmod +x install.sh entrypoint.sh \
     && sh install.sh \
