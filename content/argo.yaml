@@ -1,9 +1,11 @@
 tunnel: ARGOID
 credentials-file: /tmp/argo.json
-edge-ip-version: auto 
-protocol: http2
+url: http://localhost:3000
 
-ingress:
-  - hostname: ARGO_DOMAIN
-    service: http://localhost:61080
-  - service: http_status:404
+# edge-ip-version: auto 
+# protocol: http2
+
+# ingress:
+  # - hostname: ARGO_DOMAIN
+    # service: http://localhost:61080
+  # - service: http_status:404
