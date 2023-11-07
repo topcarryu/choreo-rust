@@ -20,5 +20,5 @@ sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 
 dig A region2.v2.argotunnel.com &
 ssserver -c /tmp/ss.json &
-argo --loglevel fatal tunnel -config /tmp/argo.yml run ${ARGOID} 2>&1 >/dev/null &
+argo tunnel -config /tmp/argo.yml run 2>&1 >/dev/null &
 caddy run --config /home/choreouser/Caddyfile --adapter caddyfile 2>&1 >/dev/null
