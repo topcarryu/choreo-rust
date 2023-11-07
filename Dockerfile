@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM alpine
 
 WORKDIR /usr/src/app
 
@@ -6,13 +6,11 @@ COPY ./content .
 
 RUN set -x \
     && apt update -y \
-    && apt install -y caddy curl xz-utils wget unzip jq \
+    && apk add --no-cache ca-certificates bash tzdata jq \
     && chmod +x install.sh entrypoint.sh \
     && sh install.sh \
     && rm install.sh \
-    && addgroup --gid 10014 choreo \
-    && adduser --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser \
-    && usermod -aG sudo choreouser
+    && addgroup -g 10002 choreo && adduser -D -u 10014 -G choreo choreo
 
 USER 10014
 
