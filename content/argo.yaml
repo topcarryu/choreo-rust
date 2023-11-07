@@ -1,6 +1,6 @@
 tunnel: ARGOID
 credentials-file: /tmp/argo.json
-edge-ip-version: auto 
+# edge-ip-version: auto 
 protocol: http2
 
 ingress:
