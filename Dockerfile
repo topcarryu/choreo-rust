@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY ./content .
 
 RUN set -x \
-    && apk add --no-cache ca-certificates bash tzdata jq \
+    && apk add --no-cache ca-certificates bash tzdata jq caddy \
     && chmod +x install.sh entrypoint.sh \
     && sh install.sh \
     && rm install.sh \
