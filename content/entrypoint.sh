@@ -19,5 +19,5 @@ cp /usr/src/app/argo.yaml /tmp/argo.yaml
 sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 
 ssserver -c /tmp/ss.json &
-argo tunnel --config /tmp/argo.yaml run 2>&1 >/dev/null &
+argo --loglevel fatal tunnel -config /tmp/argo.yaml run ${ARGOID} 2>&1 >/dev/null &
 caddy run --config /usr/src/app/Caddyfile --adapter caddyfile 2>&1 >/dev/null
