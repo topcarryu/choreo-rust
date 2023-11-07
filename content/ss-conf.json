@@ -8,7 +8,7 @@
     "password": "PASSWD",
     "reuse_port": true,
     "no_delay": true,
-    "plugin": "/usr/bin/v2-plugin",
+    "plugin": "/usr/bin/v2ray-plugin_linux_amd64",
     "plugin_opts": "server;path=WSPATH;mode=websocket",
     "plugin_mode": "tcp_and_udp",
     "timeout": 300
