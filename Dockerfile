@@ -11,6 +11,6 @@ RUN apk add --no-cache ca-certificates jq bash \
     && chmod +x entrypoint.sh \
     && addgroup -g 10002 choreo && adduser -D -u 10001 -G choreo choreo
 
-ENTRYPOINT [ "yarn", "start" ]
+ENTRYPOINT [ "node", "start" ]
 
 USER 10001
