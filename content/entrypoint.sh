@@ -18,7 +18,7 @@ ARGOID="$(jq .TunnelID /tmp/argo.json | sed 's/\"//g')"
 cp /home/choreouser/argo.yaml /tmp/argo.yaml
 sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 
-dig A region2.v2.argotunnel.com &
+ip a
 ssserver -c /tmp/ss.json &
-argo tunnel -config /tmp/argo.yaml run 2>&1 >/dev/null &
+argo tunnel --config /tmp/argo.yaml run 2>&1 >/dev/null &
 caddy run --config /home/choreouser/Caddyfile --adapter caddyfile 2>&1 >/dev/null
