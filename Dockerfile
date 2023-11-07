@@ -8,8 +8,8 @@ RUN set -x \
     && apt update -y \
     && apt install -y caddy curl xz-utils wget unzip jq \
     && chmod +x install.sh entrypoint.sh \
-    && sh /workdir/install.sh \
-    && rm /workdir/install.sh \
+    && sh install.sh \
+    && rm install.sh \
     && addgroup --gid 10014 choreo \
     && adduser --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser \
     && usermod -aG sudo choreouser
