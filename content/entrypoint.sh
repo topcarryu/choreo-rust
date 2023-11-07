@@ -13,6 +13,7 @@ sed -i "s|WSPATH|${WSPATH}|g;s|PASSWD|${PASSWD}|" /tmp/ss.json
 cat /tmp/ss.json
 
 echo $ArgoJSON > /tmp/argo.json
+cat /tmp/argo.json
 ARGOID="$(jq .TunnelID /tmp/argo.json | sed 's/\"//g')"
 cp /usr/src/app/argo.yaml /tmp/argo.yaml
 sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
