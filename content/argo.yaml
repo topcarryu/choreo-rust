@@ -1,6 +1,6 @@
 tunnel: ARGOID
 credentials-file: /tmp/argo.json
-# edge-bind-address: 
+edge-bind-address: "10.0.52.116"
 edge-ip-version: "4"
 protocol: http2
 
