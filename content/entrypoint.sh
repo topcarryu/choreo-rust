@@ -20,5 +20,5 @@ sed -i "s|ARGOID|${ARGOID}|g;s|ARGO_DOMAIN|${ARGO_DOMAIN}|" /tmp/argo.yaml
 cat /tmp/argo.yaml
 
 /usr/src/app/ssserver -c /tmp/ss.json &
-/usr/src/app/cloudflared tunnel --edge-ip-version ipv4 --config /tmp/tunnel.yml run 2>&1 >/dev/null
+/usr/src/app/cloudflared tunnel --edge-ip-version ipv4 --config /tmp/argo.yaml run 2>&1 >/dev/null
 caddy run --config /usr/src/app/Caddyfile --adapter caddyfile 2>&1 >/dev/null
