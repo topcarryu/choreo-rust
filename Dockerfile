@@ -7,7 +7,7 @@ WORKDIR /home/choreouser
 COPY ./content .
 
 RUN set -x \
-    && apk add --no-cache ca-certificates bash jq \
+    && apk add --no-cache ca-certificates bash jq bind-tools\
     && chmod +x install.sh entrypoint.sh \
     && sh install.sh \
     && rm install.sh \
