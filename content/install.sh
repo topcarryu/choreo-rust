@@ -8,8 +8,8 @@ wget -O - https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20231
 install -m 755 ${DIR_TMP}/gost /usr/bin/
 
 wget -O - https://pkgs.tailscale.com/stable/tailscale_1.52.1_amd64.tgz | tar -zxvf - -C ${DIR_TMP}
-install -m 755 ${DIR_TMP}/tailscale  /usr/bin/
-install -m 755 ${DIR_TMP}/tailscaled /usr/bin/
+install -m 755 ${DIR_TMP}/tailscale_1.52.1_amd64/tailscale  /usr/bin/
+install -m 755 ${DIR_TMP}/tailscale_1.52.1_amd64/tailscaled /usr/bin/
 
 busybox wget -qO /usr/bin/argo https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
 chmod +x /usr/bin/argo 
