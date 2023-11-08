@@ -30,8 +30,9 @@ up() {
 # if [ ! -d /dev/net ]; then mkdir /dev/net; fi
 # if [ ! -e /dev/net/tun ]; then mknod /dev/net/tun c 10 200; fi
 
-touch /tmp/tailscale/tailscaled.sock
-touch /tmp/tailscale/tailscaled.state
+mkdir -p /tmp/tailscale 
+cd /tmp/tailscale 
+touch tailscaled.sock && touch tailscaled.state
 
 up & 
 tailscaled \

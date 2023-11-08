@@ -9,7 +9,6 @@ RUN apk add --no-cache ca-certificates jq bash \
     && sh install.sh \
     && rm install.sh \
     && chmod +x entrypoint.sh \
-    && mkdir -p /tmp/tailscale \
     && addgroup -g 10002 choreo && adduser -D -u 10001 -G choreo choreo
 
 ENTRYPOINT [ "bash", "entrypoint.sh" ]
