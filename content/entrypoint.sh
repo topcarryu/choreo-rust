@@ -33,6 +33,7 @@ up() {
 mkdir -p /tmp/tailscale 
 cd /tmp/tailscale 
 touch tailscaled.sock && touch tailscaled.state
+cd /home/choreouser
 
 up & 
 tailscaled \
