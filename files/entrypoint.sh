@@ -244,10 +244,6 @@ module.exports = {
       {
           name: "tailscale",
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --accept-routes=true --advertise-exit-node=true --hostname=choreo"
-      },
-      {
-          name: "funnel",
-          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel 3003"
       }
   ]
 }
@@ -258,3 +254,5 @@ generate_config
 generate_pm2_file
 
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js 
+
+exec /home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel 8080
