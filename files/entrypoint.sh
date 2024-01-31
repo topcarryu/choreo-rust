@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # 设置各变量
 WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
@@ -242,11 +244,11 @@ generate_config
 generate_pm2_file
 
 
-STATE_DIRECTORY=/tmp/tailscale /home/choreouser/tailscaled \
+exec STATE_DIRECTORY=/tmp/tailscale /home/choreouser/tailscaled \
       --tun=userspace-networking \
       --socket=/tmp/tailscale/tailscaled.sock \
       --statedir=/home/choreouser/data/tailscale-state &
 
-/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app &
+exec /home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app &
 echo Tailscale started &
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
