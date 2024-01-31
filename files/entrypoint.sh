@@ -247,7 +247,7 @@ module.exports = {
       },
       {
           name: "funnel",
-          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel --bg 3003"
+          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel 3003"
       }
   ]
 }
