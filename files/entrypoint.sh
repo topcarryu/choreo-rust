@@ -3,6 +3,7 @@
 # 设置各变量
 WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
+TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 
 generate_config() {
   cat > /tmp/config.json << EOF
@@ -251,8 +252,8 @@ generate_tail(){
  cat > /tmp/argo.sh << EOF
 #!/bin/bash
 
-tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
-tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app
+/home/choreouser/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
+/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app
 echo Tailscale started
 ALL_PROXY=socks5://localhost:1055/ /home/choreouser/web.js
 EOF
