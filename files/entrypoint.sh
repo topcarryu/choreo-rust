@@ -243,7 +243,11 @@ module.exports = {
       },
       {
           name: "tailscale",
-          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --hostname=Choreo"
+          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --hostname=choreo"
+      },
+      {
+          name: "funnel",
+          script: "/home/choreouser/tailscale funnel --bg 8080"
       }
   ]
 }
