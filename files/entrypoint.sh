@@ -7,6 +7,13 @@ WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 
+STATE_DIRECTORY=/tmp/tailscale 
+
+/home/choreouser/tailscaled \
+    --tun=userspace-networking \
+    --socket=/tmp/tailscale/tailscaled.sock \
+    --statedir=/home/choreouser/data/tailscale-state 
+
 generate_config() {
   cat > /tmp/config.json << EOF
 {
@@ -228,27 +235,39 @@ EOF
 
 
 generate_pm2_file() {
+  [[ $ARGO_AUTH =~ TunnelSecret ]] && ARGO_ARGS="tunnel --edge-ip-version auto --config /tmp/tunnel.yml run"
+  [[ $ARGO_AUTH =~ ^[A-Z0-9a-z=]{120,250}$ ]] && ARGO_ARGS="tunnel --edge-ip-version auto --protocol http2 run --token ${ARGO_AUTH}"
+
+  TLS=${NEZHA_TLS:+'--tls'}
+
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
   "apps":[
-        {
+      {
           "name":"web",
           "script":"/home/choreouser/web.js run -c /tmp/config.json"
-        }
-       ]
-    }
+     
+EOF
+
+  [ -n "${TAILSCALE_AUTHKEY}" ] && cat >> /tmp/ecosystem.config.js << EOF
+      },
+      {
+          name: 'tail',
+          script: '/home/choreouser/tailscale',
+          args: "up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app",
+          out_file: "/dev/null",
+          error_file: "/dev/null"
+
+EOF
+
+  cat >> /tmp/ecosystem.config.js << EOF
+      }
+  ]
+}
 EOF
 }
 
 generate_config
 generate_pm2_file
 
-
-exec STATE_DIRECTORY=/tmp/tailscale /home/choreouser/tailscaled \
-      --tun=userspace-networking \
-      --socket=/tmp/tailscale/tailscaled.sock \
-      --statedir=/home/choreouser/data/tailscale-state &
-
-exec /home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app &
-echo Tailscale started &
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
