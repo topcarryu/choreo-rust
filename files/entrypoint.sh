@@ -252,8 +252,10 @@ generate_tail(){
  cat > /tmp/argo.sh << EOF
 #!/bin/bash
 
-/home/choreouser/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
-/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app
+set -e
+
+exec /home/choreouser/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
+exec /home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app
 echo Tailscale started
 ALL_PROXY=socks5://localhost:1055/ /home/choreouser/web.js
 EOF
