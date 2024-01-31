@@ -2,8 +2,6 @@
 
 set -e
 
-mkdir -p /home/choreouser/data/tailscale-state /tmp/tailscale
-
 STATE_DIRECTORY=/tmp/tailscale /home/choreouser/tailscaled \
       --tun=userspace-networking \
       --socket=/tmp/tailscale/tailscaled.sock \
