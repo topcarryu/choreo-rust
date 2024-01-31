@@ -250,5 +250,4 @@ STATE_DIRECTORY=/tmp/tailscale /home/choreouser/tailscaled \
 
 /home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app &
 echo Tailscale started &
-ALL_PROXY=socks5://localhost:1055/ /home/choreouser/web.js &
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
