@@ -5,9 +5,9 @@ set -e
 # 设置各变量
 WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
-TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'de04add9-5c68-8bab-950c-08cd5320df18'}
+TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'ABCDEFG'}
 
-# STATE_DIRECTORY=/tmp/tailscale 
+STATE_DIRECTORY=/tmp/tailscale 
 
 generate_config() {
   cat > /tmp/config.json << EOF
@@ -228,7 +228,6 @@ generate_config() {
 EOF
 }
 
-
 generate_pm2_file() {
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
@@ -244,6 +243,10 @@ module.exports = {
       {
           name: "tailscale",
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --accept-routes=true --advertise-exit-node=true --hostname=choreo"
+      },
+      {
+          name: "funnel",
+          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel --bg 8080"
       }
   ]
 }
@@ -253,6 +256,4 @@ EOF
 generate_config
 generate_pm2_file
 
-[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js 
-
-exec /home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel 8080
+[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
