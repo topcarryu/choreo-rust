@@ -253,5 +253,4 @@ EOF
 generate_config
 generate_pm2_file
 
-[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js &
-/home/choreouser/tailscale funnel --bg 8080
+[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js 
