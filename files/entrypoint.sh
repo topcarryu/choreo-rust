@@ -238,12 +238,12 @@ module.exports = {
           "script":"/home/choreouser/web.js run -c /tmp/config.json"
       },
       {
-          name: 'tailscale',
-          script: "/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app"
-      },
-      {
           name: 'tailscaled',
           script: '/home/choreouser/tailscaled --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock  --statedir=/tmp/tailscale/data/tailscale-state"
+      },
+      {
+          name: 'tailscale',
+          script: "/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app"
       }
   ]
 }
