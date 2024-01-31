@@ -241,5 +241,5 @@ EOF
 generate_config
 generate_pm2_file
 
-bash tail.sh &
+bash /home/choreouser/tail.sh &
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
