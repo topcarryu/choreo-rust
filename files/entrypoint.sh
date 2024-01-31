@@ -239,11 +239,11 @@ module.exports = {
       },
       {
           name: "tailscaled",
-          script: "/home/choreouser/tailscaled --port=64323 --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --statedir=/tmp/tailscale/data/tailscale-state"
+          script: "/home/choreouser/tailscaled --port=3006 --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --statedir=/tmp/tailscale/data/tailscale-state"
       },
       {
           name: "tailscale",
-          script: "/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app"
+          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --hostname=Choreo"
       }
   ]
 }
@@ -253,4 +253,5 @@ EOF
 generate_config
 generate_pm2_file
 
-[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
+[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js &
+/home/choreouser/tailscale funnel --bg 8080
