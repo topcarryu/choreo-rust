@@ -247,7 +247,7 @@ module.exports = {
       },
       {
           name: "funnel",
-          script: "/home/choreouser/tailscale funnel --bg 8080"
+          script: "/home/choreouser/tailscale funnel 8080"
       }
   ]
 }
