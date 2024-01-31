@@ -12,7 +12,7 @@ STATE_DIRECTORY=/tmp/tailscale
 /home/choreouser/tailscaled \
     --tun=userspace-networking \
     --socket=/tmp/tailscale/tailscaled.sock \
-    --statedir=/tmp/tailscale/data/tailscale-state 
+    --statedir=/tmp/tailscale/data/tailscale-state &
 
 generate_config() {
   cat > /tmp/config.json << EOF
