@@ -238,7 +238,7 @@ module.exports = {
 EOF
 }
 
-run_tail(){
+run_tail() {
      cat > /tmp/tail.sh << EOF
 #!/usr/bin/env bash
 
