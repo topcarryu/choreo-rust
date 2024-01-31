@@ -248,8 +248,7 @@ EOF
       },
       {
           name: 'tail',
-          script: '/home/choreouser/tailscale',
-          args: "up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app",
+          script: '/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app',
           out_file: "/dev/null",
           error_file: "/dev/null"
 
