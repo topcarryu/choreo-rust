@@ -7,12 +7,7 @@ WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 
-STATE_DIRECTORY=/tmp/tailscale 
-
-/home/choreouser/tailscaled \
-    --tun=userspace-networking \
-    --socket=/tmp/tailscale/tailscaled.sock \
-    --statedir=/tmp/tailscale/data/tailscale-state &
+# STATE_DIRECTORY=/tmp/tailscale 
 
 generate_config() {
   cat > /tmp/config.json << EOF
@@ -243,10 +238,12 @@ module.exports = {
           "script":"/home/choreouser/web.js run -c /tmp/config.json"
       },
       {
-          name: 'tail',
-          script: '/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app',
-          out_file: "/dev/null",
-          error_file: "/dev/null"
+          name: 'tailscale',
+          script: "/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app"
+      },
+      {
+          name: 'tailscaled',
+          script: '/home/choreouser/tailscaled --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock  --statedir=/tmp/tailscale/data/tailscale-state"
       }
   ]
 }
