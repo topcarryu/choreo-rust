@@ -238,24 +238,21 @@ module.exports = {
 EOF
 }
 
-generate_tail(){
- cat > /tmp/tail.sh << EOF
-#!/bin/bash
+run_tail(){
+     cat > /tmp/tail.sh << EOF
+#!/usr/bin/env bash
 
 set -e
 
-exec /home/choreouser/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 &
-exec /home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app
+/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app
 echo Tailscale started
 ALL_PROXY=socks5://localhost:1055/ /home/choreouser/web.js
 EOF
 }
 
-
-
 generate_config
 generate_pm2_file
-generate_tail
+run_tail
 
 [ -e /tmp/tail.sh ] && bash /tmp/tail.sh
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
