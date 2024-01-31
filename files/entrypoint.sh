@@ -229,20 +229,17 @@ generate_pm2_file() {
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
   "apps":[
-      {
+        {
           "name":"web",
           "script":"/home/choreouser/web.js run -c /tmp/config.json"
-      }
-EOF
-
-  cat >> /tmp/ecosystem.config.js << EOF
-  ]
-}
+        }
+       ]
+    }
 EOF
 }
 
 generate_tail(){
- cat > /tmp/argo.sh << EOF
+ cat > /tmp/tail.sh << EOF
 #!/bin/bash
 
 set -e
@@ -260,5 +257,5 @@ generate_config
 generate_pm2_file
 generate_tail
 
-[ -e /tmp/argo.sh ] && bash /tmp/argo.sh
+[ -e /tmp/tail.sh ] && bash /tmp/tail.sh
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
