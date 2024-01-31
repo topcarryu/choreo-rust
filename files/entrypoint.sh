@@ -241,20 +241,12 @@ module.exports = {
       {
           "name":"web",
           "script":"/home/choreouser/web.js run -c /tmp/config.json"
-     
-EOF
-
-  [ -n "${TAILSCALE_AUTHKEY}" ] && cat >> /tmp/ecosystem.config.js << EOF
       },
       {
           name: 'tail',
           script: '/home/choreouser/tailscale up --authkey=${TAILSCALE_AUTHKEY} --hostname=heroku-app',
           out_file: "/dev/null",
           error_file: "/dev/null"
-
-EOF
-
-  cat >> /tmp/ecosystem.config.js << EOF
       }
   ]
 }
