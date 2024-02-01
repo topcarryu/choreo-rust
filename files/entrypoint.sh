@@ -22,14 +22,6 @@ module.exports = {
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --accept-routes=true --advertise-exit-node=true --hostname=choreo"
       },
       {
-          name: "serve",
-          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock serve --bg 8088"
-      },
-      {
-          name: "cert",
-          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock cert choreo.tailnet-e2eb.ts.net"
-      },
-      {
           name: "ssserver",
           script: '/home/choreouser/ssserver -s "[::]:8088" -m "aes-256-gcm" -k "hello-kitty"'
       }
@@ -39,5 +31,6 @@ EOF
 }
 
 generate_pm2_file
-
-[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
+[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js &
+/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock cert choreo.tailnet-e2eb.ts.net &
+/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock serve --bg 8088
