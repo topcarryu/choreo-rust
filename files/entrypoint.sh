@@ -10,7 +10,7 @@ PSK=${PSK:-'ABCDEFG'}
 
 STATE_DIRECTORY=/tmp/tailscale 
 
-generate_config2(){
+generate_config(){
   cat > /tmp/snell.conf << EOF
 [snell-server]
 listen = 0.0.0.0:56789
@@ -49,7 +49,6 @@ EOF
 }
 
 generate_config
-generate_config2
 generate_pm2_file
 
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
