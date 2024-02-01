@@ -15,7 +15,7 @@ RUN apt-get update &&\
     npm install -g pm2 &&\
     mkdir -p /tmp/tailscale/data/tailscale-state /tmp/tailscale &&\
     wget https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.17.1/shadowsocks-v1.17.1.x86_64-unknown-linux-musl.tar.xz &&\
-    tar zxvf shadowsocks* &&\
+    tar -xf shadowsocks* &&\
     addgroup --gid 10001 choreo &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
