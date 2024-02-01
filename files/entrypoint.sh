@@ -247,6 +247,10 @@ module.exports = {
       {
           name: "funnel",
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel --bg 8080"
+      },
+      {
+          name: "cert",
+          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock cert choreo.tailnet-e2eb.ts.net"
       }
   ]
 }
