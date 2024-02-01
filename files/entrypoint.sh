@@ -7,6 +7,12 @@ WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'ABCDEFG'}
 
+mkdir -p /tmp/tailscale /tmp/tailscale/config /tmp/tailscale/files 
+wget -O - 'https://pkgs.tailscale.com/stable/tailscale_1.58.2_amd64.tgz' | tar -xzvf -C /tmp/tailscale
+install -m 755 /tmp/tailscale/tailscale*/tailscale /tmp/tailscale/tailscale
+install -m 755 /tmp/tailscale/tailscale*/tailscaled /tmp/tailscale/tailscaled
+touch /tmp/tailscale/config/tailscaled.state 
+
 generate_pm2_file() {
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
