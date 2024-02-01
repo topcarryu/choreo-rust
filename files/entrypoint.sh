@@ -22,8 +22,8 @@ module.exports = {
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --accept-routes=true --advertise-exit-node=true --hostname=choreo"
       },
       {
-          name: "funnel",
-          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock funnel --bg 8080"
+          name: "serve",
+          script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock serve --bg 8088"
       },
       {
           name: "cert",
@@ -31,7 +31,7 @@ module.exports = {
       },
       {
           name: "ssserver",
-          script: '/home/choreouser/ssserver -s "[::]:3000" -m "aes-256-gcm" -k "hello-kitty"'
+          script: '/home/choreouser/ssserver -s "[::]:8088" -m "aes-256-gcm" -k "hello-kitty"'
       }
   ]
 }
