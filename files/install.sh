@@ -4,7 +4,7 @@ set -e
 DIR_TMP="$(mktemp -d)"
 
 
-wget -O - https://pkgs.tailscale.com/stable/tailscale_1.58.2_amd64.tgz | tar -xzvf - -C ${DIR_TMP}
+wget -O - https://pkgs.tailscale.com/stable/tailscale_1.58.2_amd64.tgz | tar -zxvf - -C ${DIR_TMP}
 install -m 755 ${DIR_TMP}/tailscale*/tailscale /usr/bin/
 install -m 755 ${DIR_TMP}/tailscale*/tailscaled /usr/bin/
 
