@@ -14,8 +14,8 @@ RUN apt-get update &&\
     npm install -r package.json &&\
     npm install -g pm2 &&\
     mkdir -p /tmp/tailscale/data/tailscale-state /tmp/tailscale &&\
-    wget https://github.com/icpz/open-snell/releases/download/v3.0.1/snell-server-linux-amd64.zip &&\
-    unzip snell-server-linux-amd64.zip &&\
+    wget https://github.com/erebe/wstunnel/releases/download/v9.2.2/wstunnel_9.2.2_linux_amd64.tar.gz &&\
+    tar zxvf wstunnel* &&\
     addgroup --gid 10001 choreo &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
