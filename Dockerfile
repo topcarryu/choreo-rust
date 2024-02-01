@@ -13,7 +13,8 @@ RUN apt-get update &&\
     apt-get install -y iproute2 vim netcat-openbsd &&\
     npm install -r package.json &&\
     npm install -g pm2 &&\
-    mkdir -p /tmp/tailscale/data/tailscale-state /tmp/tailscale &&\
+    mkdir -p /tmp/tailscale/config /tmp/tailscale/files &&\
+    touch /tmp/tailscale/config/tailscaled.state &&\
     wget https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.17.1/shadowsocks-v1.17.1.x86_64-unknown-linux-musl.tar.xz &&\
     tar -xf shadowsocks* &&\
     addgroup --gid 10001 choreo &&\

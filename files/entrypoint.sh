@@ -13,7 +13,7 @@ module.exports = {
   "apps":[
       {
           name: "tailscaled",
-          script: "/home/choreouser/tailscaled --port=3006 --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --statedir=/tmp/tailscale/data/tailscale-state"
+          script: "/home/choreouser/tailscaled --port=3006 --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --state=/tmp/tailscale/config/tailscaled.state --statedir=/tmp/tailscale/files"
       },
       {
           name: "tailscale",
