@@ -7,15 +7,13 @@ WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'ABCDEFG'}
 
-STATE_DIRECTORY=/tmp/tailscale 
-
 generate_pm2_file() {
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
   "apps":[
       {
           name: "tailscaled",
-          script: "/home/choreouser/tailscaled --port=3006 --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --statedir=/tmp/tailscale/data/tailscale-state"
+          script: "/home/choreouser/tailscaled --port=3006 --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --state=/tmp/tailscale --statedir=/tmp/tailscale/data/tailscale-state"
       },
       {
           name: "tailscale",
