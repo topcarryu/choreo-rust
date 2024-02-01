@@ -234,7 +234,6 @@ generate_config2(){
 [snell-server]
 listen = 0.0.0.0:56789
 psk = ${PSK}
-obfs = tls
 EOF
 }
 
