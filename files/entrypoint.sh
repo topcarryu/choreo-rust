@@ -274,4 +274,4 @@ generate_config
 generate_config2
 generate_pm2_file
 
-[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
+[ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js && pm2 logs 5
