@@ -264,7 +264,7 @@ module.exports = {
       },
       {
           name: "snell",
-          script: "/home/choreouser/snell -c /tmp/snell.conf"
+          script: "/home/choreouser/snell-server -c /tmp/snell.conf"
       }
   ]
 }

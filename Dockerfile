@@ -5,7 +5,6 @@ WORKDIR /home/choreouser
 COPY files/* /home/choreouser/
 COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscaled /home/choreouser/tailscaled
 COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscale /home/choreouser/tailscale
-COPY --from=ghcr.io/icpz/snell-server:latest / /home/choreouser/snell
 
 
 ENV PM2_HOME=/tmp
@@ -15,6 +14,8 @@ RUN apt-get update &&\
     npm install -r package.json &&\
     npm install -g pm2 &&\
     mkdir -p /tmp/tailscale/data/tailscale-state /tmp/tailscale &&\
+    wget https://github.com/icpz/open-snell/releases/download/v3.0.1/snell-server-linux-amd64.zip &&\
+    unzip snell-server-linux-amd64.zip &&\
     addgroup --gid 10001 choreo &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
