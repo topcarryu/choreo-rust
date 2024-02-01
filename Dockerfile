@@ -5,6 +5,8 @@ WORKDIR /home/choreouser
 COPY files/* /home/choreouser/
 COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscaled /home/choreouser/tailscaled
 COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscale /home/choreouser/tailscale
+COPY --from=ghcr.io/icpz/snell-server:latest / /home/choreouser/snell
+
 
 ENV PM2_HOME=/tmp
 

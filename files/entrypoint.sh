@@ -6,6 +6,7 @@ set -e
 WSPATH=${WSPATH:-'argo'}
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
 TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'ABCDEFG'}
+PSK=${PSK:-'ABCDEFG'}
 
 STATE_DIRECTORY=/tmp/tailscale 
 
@@ -228,6 +229,15 @@ generate_config() {
 EOF
 }
 
+generate_config2(){
+  cat > /tmp/snell.conf << EOF
+[snell-server]
+listen = 0.0.0.0:56789
+psk = ${PSK}
+obfs = tls
+EOF
+}
+
 generate_pm2_file() {
   cat > /tmp/ecosystem.config.js << EOF
 module.exports = {
@@ -251,6 +261,10 @@ module.exports = {
       {
           name: "cert",
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock cert choreo.tailnet-e2eb.ts.net"
+      },
+      {
+          name: "snell",
+          script: "/home/choreouser/snell -c /tmp/snell.conf"
       }
   ]
 }
@@ -258,6 +272,7 @@ EOF
 }
 
 generate_config
+generate_config2
 generate_pm2_file
 
 [ -e /tmp/ecosystem.config.js ] && pm2 start /tmp/ecosystem.config.js
