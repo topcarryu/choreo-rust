@@ -30,8 +30,8 @@ module.exports = {
           script: "/home/choreouser/tailscale --socket=/tmp/tailscale/tailscaled.sock cert choreo.tailnet-e2eb.ts.net"
       },
       {
-          name: "snell",
-          script: "/home/choreouser/wstunnel server wss://[::]:8080"
+          name: "wstunnel",
+          script: "/home/choreouser/wstunnel server wss://[::]:18080"
       }
   ]
 }
