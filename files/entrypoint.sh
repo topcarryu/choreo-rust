@@ -31,7 +31,7 @@ module.exports = {
       },
       {
           name: "ssserver",
-          script: '/home/choreouser/ssserver -s "[::]:80" -m "aes-256-gcm" -k "hello-kitty"'
+          script: '/home/choreouser/ssserver -s "[::]:3000" -m "aes-256-gcm" -k "hello-kitty"'
       }
   ]
 }
