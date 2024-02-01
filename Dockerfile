@@ -3,8 +3,8 @@ FROM node:latest
 WORKDIR /home/choreouser
 
 COPY files/* /home/choreouser/
-COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscaled /home/choreouser/tailscaled
-COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscale /home/choreouser/tailscale
+COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscaled /tmp/tailscale/tailscaled
+COPY --from=docker.io/tailscale/tailscale:unstable /usr/local/bin/tailscale /tmp/tailscale/tailscale
 
 
 ENV PM2_HOME=/tmp
