@@ -15,8 +15,8 @@ ssserver -s "[::]:13000" -m "aes-256-gcm" -k "hello-kitty" &
 
 tailscaled --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --state=/tmp/tailscale/config/tailscaled.state --statedir=/tmp/tailscale/files &
 tailscale up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --accept-routes=true --advertise-exit-node=true --hostname=choreo &
-tailscale cert ${DOMAIN} &
-tailscale serve --bg 13000 &
+tailscale --socket=/tmp/tailscale/tailscaled.sock cert ${DOMAIN} &
+tailscale --socket=/tmp/tailscale/tailscaled.sock serve --bg 13000 &
 
 cat > /tmp/Caddyfile << EOF
 :$PORT
