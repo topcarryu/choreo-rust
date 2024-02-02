@@ -2,6 +2,7 @@
 
 exec 2>&1
 
+PORT=${PORT:-'3000'}
 TAILSCALE_AUTHKEY=${TAILSCALE_AUTHKEY:-'ABCDEFG'}
 DOMAIN=${DOMAIN:-'a.b'}
 
@@ -17,4 +18,10 @@ tailscale up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-
 tailscale cert ${DOMAIN} &
 tailscale serve --bg 13000 &
 
-echo ":3000\nrespond \"Hello, World!\"" > Caddyfile && caddy run
+cat > /tmp/Caddyfile << EOF
+:{$PORT} {
+  respond "Hello, world!"
+}
+EOF
+
+caddy run --config /tmp/Caddyfile --adapter caddyfile
