@@ -19,9 +19,9 @@ tailscale cert ${DOMAIN} &
 tailscale serve --bg 13000 &
 
 cat > /tmp/Caddyfile << EOF
-:{$PORT} {
-  respond "Hello, world!"
-}
+:$PORT
+
+respond "Hello, world!"
 EOF
 
 caddy run --config /tmp/Caddyfile --adapter caddyfile
