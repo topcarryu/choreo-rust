@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -e
 DIR_TMP="$(mktemp -d)"
 
 
