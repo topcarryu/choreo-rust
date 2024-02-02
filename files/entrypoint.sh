@@ -13,7 +13,7 @@ touch /tmp/tailscale/config/tailscaled.state
 
 ssserver -s "[::]:13000" -m "aes-256-gcm" -k "hello-kitty" &
 
-tailscaled --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --state=/tmp/tailscale/config/tailscaled.state --statedir=/tmp/tailscale/files &
+tailscaled --tun=userspace-networking --socket=/tmp/tailscale/tailscaled.sock --state=/tmp/tailscale/config/ --statedir=/tmp/tailscale/files &
 tailscale up --authkey=${TAILSCALE_AUTHKEY} --ssh=true --accept-dns=true --host-routes=true --netfilter-mode=on --snat-subnet-routes=true --accept-routes=true --advertise-exit-node=true --hostname=choreo &
 tailscale --socket=/tmp/tailscale/tailscaled.sock cert ${DOMAIN} &
 tailscale --socket=/tmp/tailscale/tailscaled.sock serve --bg 13000 &
